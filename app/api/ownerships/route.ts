@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
+import getDatabase from '../data/getdatabase';
 
 export async function GET(request: Request) {
   try {
@@ -10,9 +9,7 @@ export async function GET(request: Request) {
     const start = (Number(page) - 1) * Number(limit);
     const end = start + Number(limit);
 
-    const filePath = path.join(process.cwd(), 'app', 'api', 'data', 'db.json');
-    const jsonData = await fs.readFile(filePath, 'utf-8');
-    const data = JSON.parse(jsonData);
+    const data = await getDatabase();
     const paginatedData = data.slice(start, end);
 
     return NextResponse.json({

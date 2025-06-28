@@ -20,7 +20,7 @@ const CardProperty = ({
         <div className="bg-white rounded-xl shadow p-4 max-w-5xl mx-auto w-full overflow-hidden hover:shadow-md transition-all duration-300">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div className="flex items-center gap-4 flex-1 min-w-0">
-                    <div className="w-16 h-16 relative shrink-0">
+                    <div className="w-16 h-16 relative shrink-0 rounded-full overflow-hidden">
                         <Image
                             src={img}
                             alt={alt}

@@ -1,115 +1,89 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Input, Select } from '@headlessui/react';
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import { FilterBarProps } from '@/app/interfaces/Filters/FilterBarProps';
-
+import { MagnifyingGlassIcon, FunnelIcon, XMarkIcon } from '@heroicons/react/20/solid';
+import { Transition, Button } from '@headlessui/react'
 
 
 
 const propertyTypes = [
-  { id: 'all', name: 'Todos los tipos' },
-  { id: 'house', name: 'Casa' },
-  { id: 'apartment', name: 'Departamento' },
-
+  { id: 'all', name: 'Todos' },
+  { id: 'casa', name: 'Casa' },
+  { id: 'departamento', name: 'Departamento' },
 ];
 
-const priceRanges = [
-  { id: 'all', name: 'Cualquier precio', min: 0, max: 0 },
-  { id: '0-100000', name: 'Hasta $100,000', min: 0, max: 100000 },
-  { id: '100000-200000', name: '$100,000 - $200,000', min: 100000, max: 200000 },
-  { id: '200000-300000', name: '$200,000 - $300,000', min: 200000, max: 300000 },
-  { id: '300000-500000', name: '$300,000 - $500,000', min: 300000, max: 500000 },
-  { id: '500000+', name: 'Más de $500,000', min: 500000, max: 999999999 },
-];
 
-export default function FilterBar({
-  onCityChange,
-  onTypeChange,
-  onPriceRangeChange,
-}: FilterBarProps) {
-  const [selectedType, setSelectedType] = useState(propertyTypes[0]);
-  const [selectedPriceRange, setSelectedPriceRange] = useState(priceRanges[0]);
-  const [citySearch, setCitySearch] = useState('');
 
-  const handleCityChange = (value: string) => {
-    setCitySearch(value);
-    onCityChange?.(value);
+export default function FilterBar() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const [city, setCity] = useState(searchParams.get('city') || '');
+  const [type, setType] = useState(searchParams.get('type') || 'all');
+
+  const applyFilters = () => {
+    const params = new URLSearchParams();
+
+    if (city) params.set('city', city);
+    if (type !== 'all') params.set('type', type);
+
+    router.push(`/ownership?${params.toString()}`);
   };
-
 
   return (
     <div className="bg-gray-100 rounded-lg p-6 mb-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         <div className="lg:col-span-2">
-          <label htmlFor="city-search" className="block text-sm font-medium text-gray-700 mb-2">
-            Ciudad
-          </label>
+          <label>Ciudad</label>
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" />
-            </div>
+            <MagnifyingGlassIcon className="absolute left-2 top-2 h-5 w-5 text-gray-400" />
             <Input
-              id="city-search"
-              type="text"
-              value={citySearch}
-              onChange={(e) => handleCityChange(e.target.value)}
-              placeholder="Buscar por ciudad..."
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white focus:outline-none placeholder-gray-500 sm:text-sm"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              placeholder="Buscar por ciudad"
+              className="border rounded-md w-full bg-white text-black text-sm p-2 focus:outline-none pl-10"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Tipo de propiedad
-          </label>
+          <label>Tipo de propiedad</label>
           <Select
-            name="type-property"
-            className="relative w-full cursor-default rounded-md bg-white py-2 pl-3 pr-10 text-left shadow-sm border border-gray-300 focus:outline-none  sm:text-sm cursor-pointer"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            className="border rounded-md w-full bg-white text-black text-sm p-2 focus:outline-none cursor-pointer "
           >
-            {propertyTypes.map((type) => (
-              <option key={type.id} value={type.name}>
-                {type.name}
-              </option>
+            {propertyTypes.map((t) => (
+              <option key={t.id} value={t.id}>{t.name}</option>
             ))}
           </Select>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Rango de precio
-          </label>
-          <Select
-            name="price-range"
-            className="relative w-full cursor-default rounded-md bg-white py-2 pl-3 pr-10 text-left shadow-sm border border-gray-300 focus:outline-none  sm:text-sm cursor-pointer"
-          >
-            {priceRanges.map((range) => (
-              <option key={range.id} value={range.id}>
-                {range.name}
-              </option>
-            ))}
-          </Select>
-        </div>
       </div>
 
-      <div className="mt-4 flex justify-end">
-        <button
+      <div className="flex justify-end gap-2">
+        <Transition show={true}>
+          <Button
+            onClick={applyFilters}
+            className="w-10 h-10 flex items-center justify-center bg-black text-white cursor-pointer hover:bg-gray-800 rounded-full transition duration-300 ease-in data-closed:opacity-0"
+          >
+            <FunnelIcon className="w-5 h-5" />
+          </Button>
+        </Transition>
+
+        <Button
           onClick={() => {
-            setCitySearch('');
-            setSelectedType(propertyTypes[0]);
-            setSelectedPriceRange(priceRanges[0]);
-            onCityChange?.('');
-            onTypeChange?.('all');
-            onPriceRangeChange?.({ min: 0, max: 0 });
+            setCity('');
+            setType('all');
+            router.push('/ownership');
           }}
-          className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none cursor-pointer"
-        >
-          Limpiar filtros
-        </button>
+          className="w-10 h-10 flex items-center justify-center bg-black text-white cursor-pointer hover:bg-gray-800 rounded-full transition duration-300 ease-in data-closed:opacity-0"
+          >
+          <XMarkIcon className="w-5 h-5" />
+        </Button>
       </div>
     </div>
   );
 }
-

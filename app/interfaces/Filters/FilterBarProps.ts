@@ -1,6 +1,5 @@
-export interface FilterBarProps {
-    onCityChange?: (city: string) => void;
-    onTypeChange?: (type: string) => void;
-    onPriceRangeChange?: (range: { min: number; max: number }) => void;
+export interface ownershipsFetched {
+  city: string;
+  type: string;
   }
   

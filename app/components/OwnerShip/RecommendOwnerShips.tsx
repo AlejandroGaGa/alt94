@@ -3,7 +3,6 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { RecommendedOwnersships } from "@/app/interfaces/OwnerShips/RecommendedOwnersships";
 
 const RecommendOwnerShips = ({ price, type, city }: RecommendedOwnersships) => {
-    console.log(price, type, city);
     return (
         <div>
             <Disclosure as="div" className="p-2" defaultOpen={false}>

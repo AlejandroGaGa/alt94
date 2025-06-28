@@ -7,5 +7,14 @@ export default {
         }
         const data = await response.json();
         return data;
+    },
+    getOwnershipsBy: async (tipo: string, ciudad: string) => {
+       
+        const response = await fetch(`${process.env.BASE_URL}/api/ownerships/by?type=${tipo}&city=${ciudad}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch ownerships');
+        }
+        const data = await response.json();
+        return data;
     }
 };

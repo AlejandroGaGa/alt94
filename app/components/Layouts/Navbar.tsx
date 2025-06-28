@@ -3,9 +3,11 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname();
     const toggleMenu = () => setIsMenuOpen(prev => !prev);
     const menuItems = [
         { label: 'Inicio', href: '/' },
@@ -25,12 +27,22 @@ export default function Navbar() {
                     </div>
 
                     <nav className="hidden md:flex items-center gap-6 text-sm">
-                        {menuItems.map((item) => (
-                            <Link key={item.label} className="inline-block px-4 py-2 bg-gray-100 text-black rounded-full shadow-sm hover:bg-gray-200 hover:text-gray-800 transition-all duration-200"
-                                href={item.href}>
-                                {item.label}
-                            </Link>
-                        ))}
+                        {menuItems.map((item) => {
+                            const isActive = pathname === item.href;
+                            return (
+                                <Link 
+                                    key={item.label} 
+                                    className={`inline-block px-4 py-2 rounded-full shadow-sm transition-all duration-200 ${
+                                        isActive 
+                                            ? 'bg-gray-300 text-gray-800 font-medium' 
+                                            : 'bg-gray-100 text-black hover:bg-gray-200 hover:text-gray-800'
+                                    }`}
+                                    href={item.href}
+                                >
+                                    {item.label}
+                                </Link>
+                            );
+                        })}
                     </nav>
 
                     <div className="hidden md:flex items-center gap-4">
@@ -84,15 +96,22 @@ export default function Navbar() {
                         <span className="font-medium text-gray-700">Alt94 - Inmobiliaria</span>
                     </div>
                     <nav className="px-4 pb-4">
-                        {menuItems.map((item) => (
-                            <Link
-                                key={item.label}
-                                href={item.href}
-                                className="block px-4 py-2 bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors duration-200 rounded-md m-2"
-                            >
-                                {item.label}
-                            </Link>
-                        ))}
+                        {menuItems.map((item) => {
+                            const isActive = pathname === item.href;
+                            return (
+                                <Link
+                                    key={item.label}
+                                    href={item.href}
+                                    className={`block px-4 py-2 text-gray-600 transition-colors duration-200 rounded-md m-2 ${
+                                        isActive 
+                                            ? 'bg-gray-300 text-gray-800 font-medium' 
+                                            : 'bg-gray-100 hover:bg-gray-200'
+                                    }`}
+                                >
+                                    {item.label}
+                                </Link>
+                            );
+                        })}
                         <button
                             className="block mt-2 rounded-md w-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-600 text-center hover:bg-gray-200 transition-colors duration-200"
                             onClick={() => null}
