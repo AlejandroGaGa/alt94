@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { CardPropertyProps } from "@/app/interfaces/Home/CardPropertyProps";
 import Decimal from "decimal.js";
+import RecommendOwnerShips from "./RecommendOwnerShips";
 
 const CardProperty = ({
     title = "",
@@ -16,7 +17,7 @@ const CardProperty = ({
     const [img, setImageError] = useState(image);
 
     return (
-        <div className="bg-white rounded-xl shadow p-4 max-w-5xl mx-auto w-full overflow-hidden">
+        <div className="bg-white rounded-xl shadow p-4 max-w-5xl mx-auto w-full overflow-hidden hover:shadow-md transition-all duration-300">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div className="flex items-center gap-4 flex-1 min-w-0">
                     <div className="w-16 h-16 relative shrink-0">
@@ -56,6 +57,11 @@ const CardProperty = ({
                 </div>
 
             </div>
+            <RecommendOwnerShips
+                price={price}
+                type={type}
+                city={city}
+            />
         </div>
     );
 };
