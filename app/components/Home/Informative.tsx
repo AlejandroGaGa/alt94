@@ -1,6 +1,9 @@
+import React, { use } from 'react';
 import Image from "next/image";
+import { ownerships } from "@/app/libs/owners-request";
 
-const Informative = () => {
+const Informative = async () => {
+  await ownerships.getOwnerships();
   return (
     <section className="bg-white text-black py-20 px-6 md:px-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
