@@ -19,6 +19,7 @@ const MainBanner = () => {
                             <span className="font-bold">alt94</span> es una inmobiliaria que se dedica a la venta y alquiler de propiedades <span className="font-bold">DIGITALMENTE</span>.
                         </p>
                     </div>
+                   
                 </div>
             </div>
         </div>

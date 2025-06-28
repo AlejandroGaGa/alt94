@@ -9,9 +9,9 @@ export default function Navbar() {
     const toggleMenu = () => setIsMenuOpen(prev => !prev);
     const menuItems = [
         { label: 'Inicio', href: '/' },
-        { label: 'Nosotros', href: '/nosotros' },
-        { label: 'Propiedades', href: '/propiedades' },
-        { label: 'Contacto', href: '/contacto' },
+        { label: 'Nosotros', href: '/about' },
+        { label: 'Propiedades', href: '/ownership' },
+        { label: 'Contacto', href: '/contact' },
     ];
 
     return (
