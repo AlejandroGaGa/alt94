@@ -1,7 +1,7 @@
 
 export default {
-    getOwnerships: async () => {
-        const response = await fetch(`${process.env.BASE_URL}/api/ownerships`);
+    getOwnerships: async (page: number, limit: number) => {
+        const response = await fetch(`${process.env.BASE_URL}/api/ownerships?page=${page}&limit=${limit}`);
         if (!response.ok) {
             throw new Error('Failed to fetch ownerships');
         }

@@ -1,6 +1,9 @@
 export interface CardPropertyProps {
     title: string;
-    description: string;
+    size: number;
+    price: number;
+    type: string;
+    city: string;
     image: string;
     alt?: string;
 }

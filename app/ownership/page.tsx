@@ -1,9 +1,10 @@
-const Ownership = () => {
+import ListProperty from "../components/OwnerShip/ListProperty";
+
+export default function Ownership() {
     return (
-        <div>
-            <h1>Ownership</h1>
+        <div className="container mx-auto">
+            <ListProperty />
         </div>
     )
 }
 
-export default Ownership;
