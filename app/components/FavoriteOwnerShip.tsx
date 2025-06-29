@@ -12,7 +12,6 @@ import { FavoriteOwnerShipProps } from '../interfaces/Favorites/FavoriteOwnerShi
 * @returns: Un botón de favoritos
 */
 const FavoriteOwnerShip: React.FC<FavoriteOwnerShipProps> = ({ property, className = "" }) => {
-    console.log(property, 'property');
     const { isFavorite, toggleFavorite } = useFavorites();
     const isPropertyFavorite = isFavorite(property.id);
 

@@ -4,7 +4,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const AosAnimation = ({ children }: { children: React.ReactNode }) => {
-    console.log('AosAnimation');
     useEffect(() => {
         AOS.init();
     }, []);
