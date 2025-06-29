@@ -59,7 +59,7 @@ export default function FilterBar() {
 
       </div>
 
-      <div className="flex justify-end gap-2">
+      <div className="flex justify-end gap-2 mt-4">
         <Transition show={true}>
           <Button
             onClick={applyFilters}

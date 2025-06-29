@@ -27,6 +27,14 @@ const ListProperty = async ({ currentPage = 1, filters }: {
     return (
         <div className="flex flex-col gap-4 mt-10">
 
+            {
+                ownershipsToShow?.data?.length === 0 || ownershipsToShow?.length === 0 && (
+                    <div className="flex flex-col items-center h-screen">
+                        <h1 className="text-2xl font-bold">No se encontraron resultados</h1>
+                    </div>
+                )
+            }
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                 {ownershipsToShow?.data?.map((ownership: any) => (
                     <CardProperty

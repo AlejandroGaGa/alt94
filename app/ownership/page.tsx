@@ -17,7 +17,7 @@ export default function Ownership({
 
     return (
       <div>
-        <BannerOwnership title="Propiedades" />
+        <BannerOwnership title="Inmuebles en venta" />
         <div className="container mx-auto">
           <FilterBar />
         </div>
