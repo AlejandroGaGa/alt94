@@ -33,7 +33,7 @@ Alt94 es una aplicación web moderna de inmobiliaria desarrollada con **Next.js 
 
 1. **Clonar el repositorio**
    ```bash
-   git clone <url-del-repositorio>
+   git clone git@github.com:AlejandroGaGa/alt94.git
    cd alt94
    ```
 
