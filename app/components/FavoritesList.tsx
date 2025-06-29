@@ -6,6 +6,10 @@ import { TrashIcon } from '@heroicons/react/24/outline';
 import CardProperty from './OwnerShip/CardProperty';
 import { Button } from '@headlessui/react';
 
+/* 
+* @description: Muestra la lista de propiedades favoritas
+* @returns: Una lista de propiedades favoritas
+*/
 const FavoritesList = () => {
     const { state, removeFavorite, clearFavorites } = useFavorites();
     const favoritesCount = useFavoritesCount();

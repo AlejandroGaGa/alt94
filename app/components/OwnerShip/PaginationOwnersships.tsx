@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { PaginationOwnersshipsProps } from "@/app/interfaces/OwnerShips/PaginationOwnersshipsProps";
 
+/* 
+* @description: Muestra la paginación de las propiedades
+* @param currentPage: La página actual
+* @param totalItems: El total de propiedades
+* @param itemsPerPage: El número de propiedades por página
+* @returns: Una paginación de propiedades
+*/
 const PaginationOwnersships = ({ currentPage, totalItems, itemsPerPage }: PaginationOwnersshipsProps) => {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);

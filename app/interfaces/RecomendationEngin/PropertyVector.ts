@@ -1,3 +1,10 @@
+/* 
+* @description: Interfaz para el vector de propiedades
+* @param id: El id de la propiedad
+* @param vector: El vector de la propiedad
+* @param features: Las características de la propiedad
+* @returns: Una interfaz para el vector de propiedades
+*/
 export interface PropertyVector {
     id: number;
     vector: number[];

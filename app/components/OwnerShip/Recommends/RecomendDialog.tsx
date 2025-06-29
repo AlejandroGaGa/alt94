@@ -4,6 +4,13 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 import CardProperty from "../CardProperty";
 import Decimal from "decimal.js";
 
+/* 
+* @description: Muestra las recomendaciones de propiedades
+* @param isOpen: Indica si el diálogo está abierto o cerrado
+* @param setIsOpen: Función para cerrar el diálogo
+* @param recommendations: Las recomendaciones de propiedades
+* @returns: Un diálogo con las recomendaciones de propiedades
+*/
 const RecomendDialog = ({
     isOpen,
     setIsOpen,

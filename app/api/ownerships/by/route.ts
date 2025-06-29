@@ -2,6 +2,16 @@ import { normalizeText } from '@/app/utils/NormalizeText';
 import { NextResponse } from 'next/server';
 import getDatabase from '../../data/getdatabase';
 
+/* 
+* @description: Obtiene las propiedades por tipo y ciudad
+* @param request: La solicitud HTTP recibida.
+* @returns: Una respuesta HTTP con las propiedades filtradas.
+* @param type: El tipo de propiedad a buscar.
+* @param city: La ciudad de la propiedad a buscar.
+* @returns: Una respuesta HTTP con las propiedades filtradas.
+* @example:
+* const data = await getDatabaseByTypeAndCity("Casa", "Buenos Aires");
+*/
 export async function GET(request: Request) {
   try {
     const url = new URL(request.url);

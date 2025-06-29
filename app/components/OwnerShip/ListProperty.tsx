@@ -3,6 +3,12 @@ import CardProperty from "./CardProperty";
 import PaginationOwnersships from "./PaginationOwnersships";
 import { ownershipsFetched } from "@/app/interfaces/Filters/FilterBarProps";
 
+/* 
+* @description: Muestra la lista de propiedades
+* @param currentPage: La página actual
+* @param filters: Los filtros aplicados
+* @returns: Una lista de propiedades
+*/
 const ListProperty = async ({ currentPage = 1, filters }: {
     currentPage?: number, filters: ownershipsFetched;
 }) => {

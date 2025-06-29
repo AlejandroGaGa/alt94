@@ -8,6 +8,20 @@ import RecomendDialog from "./Recommends/RecomendDialog";
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import FavoriteOwnerShip from "../FavoriteOwnerShip";
 
+/* 
+* @description: Muestra una propiedad en la lista de propiedades
+* @param id: El id de la propiedad
+* @param title: El título de la propiedad
+* @param size: El tamaño de la propiedad
+* @param price: El precio de la propiedad
+* @param type: El tipo de propiedad
+* @param city: La ciudad de la propiedad
+* @param image: La imagen de la propiedad
+* @param alt: El alt de la propiedad
+* @param rooms: El número de habitaciones de la propiedad
+* @param isFiltered: Indica si la propiedad está filtrada
+* @returns: Una tarjeta con la propiedad
+*/
 const CardProperty = ({
     id = 0,
     title = "",

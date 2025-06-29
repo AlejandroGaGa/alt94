@@ -1,5 +1,10 @@
 import Image from "next/image";
 
+/* 
+* @description: Muestra el banner de la página de propiedades
+* @param title: El título del banner
+* @returns: Un banner con el título
+*/
 const BannerOwnership = ({ title }: { title: string }) => {
     return (
         <div className="relative w-full h-48 rounded-lg overflow-hidden">

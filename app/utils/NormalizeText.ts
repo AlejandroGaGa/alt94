@@ -1,3 +1,8 @@
+/* 
+* @description: Normaliza el texto
+* @param text: El texto a normalizar
+* @returns: El texto normalizado
+*/
 export const normalizeText = (text: string) => {
     return text
         ?.toLowerCase()

@@ -3,13 +3,14 @@
 import { HeartIcon } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartSolidIcon } from '@heroicons/react/24/solid';
 import { useFavorites } from '../context/favorites-context';
-import { Property } from '../interfaces/RecomendationEngin/Property';
+import { FavoriteOwnerShipProps } from '../interfaces/Favorites/FavoriteOwnerShipsProps';
 
-interface FavoriteOwnerShipProps {
-    property: Property;
-    className?: string;
-}
-
+/* 
+* @description: Muestra el botón de favoritos
+* @param property: La propiedad
+* @param className: La clase CSS
+* @returns: Un botón de favoritos
+*/
 const FavoriteOwnerShip: React.FC<FavoriteOwnerShipProps> = ({ property, className = "" }) => {
     console.log(property, 'property');
     const { isFavorite, toggleFavorite } = useFavorites();
