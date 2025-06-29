@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { UserCircleIcon } from '@heroicons/react/24/solid';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,13 +31,12 @@ export default function Navbar() {
                         {menuItems.map((item) => {
                             const isActive = pathname === item.href;
                             return (
-                                <Link 
-                                    key={item.label} 
-                                    className={`inline-block px-4 py-2 rounded-full shadow-sm transition-all duration-200 ${
-                                        isActive 
-                                            ? 'bg-gray-300 text-gray-800 font-medium' 
+                                <Link
+                                    key={item.label}
+                                    className={`inline-block px-4 py-2 rounded-full shadow-sm transition-all duration-200 ${isActive
+                                            ? 'bg-gray-300 text-gray-800 font-medium'
                                             : 'bg-gray-100 text-black hover:bg-gray-200 hover:text-gray-800'
-                                    }`}
+                                        }`}
                                     href={item.href}
                                 >
                                     {item.label}
@@ -47,23 +47,7 @@ export default function Navbar() {
 
                     <div className="hidden md:flex items-center gap-4">
                         <button className="relative group rounded-full bg-gray-100 p-2 text-gray-600 hover:bg-gray-200 transition-colors duration-200">
-                            <svg
-                                className="w-5 h-5"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                                />
-                            </svg>
-                            <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs text-white bg-gray-800 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-                                Próximamente
-                            </span>
+                            <UserCircleIcon className="w-6 h-6" />
                         </button>
                     </div>
 
@@ -102,11 +86,10 @@ export default function Navbar() {
                                 <Link
                                     key={item.label}
                                     href={item.href}
-                                    className={`block px-4 py-2 text-gray-600 transition-colors duration-200 rounded-md m-2 ${
-                                        isActive 
-                                            ? 'bg-gray-300 text-gray-800 font-medium' 
+                                    className={`block px-4 py-2 text-gray-600 transition-colors duration-200 rounded-md m-2 ${isActive
+                                            ? 'bg-gray-300 text-gray-800 font-medium'
                                             : 'bg-gray-100 hover:bg-gray-200'
-                                    }`}
+                                        }`}
                                 >
                                     {item.label}
                                 </Link>
@@ -118,20 +101,7 @@ export default function Navbar() {
                             disabled
                         >
                             <div className="flex items-center justify-center gap-2">
-                                <svg
-                                    className="w-4 h-4"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                                    />
-                                </svg>
+                                <UserCircleIcon className="w-4 h-4" />
                                 <span>Entrar</span>
                             </div>
                         </button>

@@ -1,5 +1,5 @@
 import SoonPage from "../components/soonPage";
-const About = () => {
+const Contact = () => {
     return (
         <div>
             <SoonPage />
@@ -7,4 +7,4 @@ const About = () => {
     )
 }
 
-export default About;
+export default Contact;
