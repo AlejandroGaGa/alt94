@@ -17,6 +17,13 @@ export default function Navbar() {
         { label: 'Inmuebles en venta', href: '/ownership' },
         { label: 'Contacto', href: '/contact' },
     ];
+    const menuItemsMobile = [
+        { label: 'Inicio', href: '/' },
+        { label: 'Nosotros', href: '/about' },
+        { label: 'Inmuebles en venta', href: '/ownership' },
+        { label: 'Contacto', href: '/contact' },
+        { label: 'Mis favoritos', href: '/favorites' },
+    ];
 
     return (
         <header className="bg-white sticky top-0 z-50 shadow">
@@ -97,12 +104,14 @@ export default function Navbar() {
                         <span className="font-medium text-gray-700">Alt94 - Inmobiliaria</span>
                     </div>
                     <nav className="px-4 pb-4">
-                        {menuItems.map((item) => {
+                        {menuItemsMobile.map((item) => {
                             const isActive = pathname === item.href;
+
                             return (
                                 <Link
                                     key={item.label}
                                     href={item.href}
+                                    onClick={() => setIsMenuOpen(false)}
                                     className={`block px-4 py-2 text-gray-600 transition-colors duration-200 rounded-md m-2 ${isActive
                                         ? 'bg-gray-300 text-gray-800 font-medium'
                                         : 'bg-gray-100 hover:bg-gray-200'
@@ -112,16 +121,7 @@ export default function Navbar() {
                                 </Link>
                             );
                         })}
-                        <button
-                            className="block mt-2 rounded-md w-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-600 text-center hover:bg-gray-200 transition-colors duration-200"
-                            onClick={() => null}
-                            disabled
-                        >
-                            <div className="flex items-center justify-center gap-2">
-                                <UserCircleIcon className="w-4 h-4" />
-                                <span>Entrar</span>
-                            </div>
-                        </button>
+
                     </nav>
                 </div>
             )}

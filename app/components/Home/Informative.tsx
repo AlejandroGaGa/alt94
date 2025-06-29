@@ -6,7 +6,7 @@ const Informative = async () => {
     <section className="bg-white text-black py-20 px-6 md:px-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
-          <div className="rounded-2xl overflow-hidden shadow-md">
+          <div data-aos="zoom-in" data-aos-delay="100" className="rounded-2xl overflow-hidden shadow-md">
             <Image
               src="/Inmobiliaria/inmobiliaria.webp"
               alt="Torre 1"
@@ -15,7 +15,7 @@ const Informative = async () => {
               className="object-cover w-full h-auto"
             />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div data-aos="zoom-in" data-aos-delay="100" className="grid grid-cols-2 gap-4">
             <div className="rounded-2xl overflow-hidden shadow-md">
               <Image
                 src="/Inmobiliaria/inmobiliaria.webp"

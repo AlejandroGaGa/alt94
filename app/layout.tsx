@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Layouts/Navbar";
 import Footer from "./components/Layouts/Footer";
 import { FavoritesProvider } from "./context/favorites-context";
+import AosAnimation from "./aos-animation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,13 +31,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <FavoritesProvider>
-          <Navbar />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
-        </FavoritesProvider>
+        <AosAnimation>
+          <FavoritesProvider>
+            <Navbar />
+            <main className="min-h-screen">
+              {children}
+            </main>
+            <Footer />
+          </FavoritesProvider>
+        </AosAnimation>
       </body>
     </html>
   );

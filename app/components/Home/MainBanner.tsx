@@ -14,9 +14,9 @@ const MainBanner = () => {
                     />
                     <div className="absolute inset-0 bg-black/50 z-10" />
                     <div className="absolute inset-0 bg-opacity-50 flex flex-col items-center justify-center rounded-4xl z-10">
-                        <h1 className="text-white text-4xl font-bold">LA CASA DE TUS SUEÑOS</h1>
-                        <p className="text-white text-2xl text-center px-8">
-                            <span className="font-bold">alt94</span> es una inmobiliaria que se dedica a la venta y alquiler de propiedades <span className="font-bold">DIGITALMENTE</span>.
+                        <h1 data-aos="fade-up" className="text-white text-4xl font-bold">LA CASA DE TUS SUEÑOS</h1>
+                        <p data-aos="fade-up" className="text-white text-2xl text-center px-8">
+                            <span data-aos="fade-up" className="font-bold">alt94</span> es una inmobiliaria que se dedica a la venta y alquiler de propiedades <span data-aos="fade-up" className="font-bold">DIGITALMENTE</span>.
                         </p>
                     </div>
                    

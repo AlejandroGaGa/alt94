@@ -40,7 +40,10 @@ const CardProperty = ({
         }
     }
     return (
-        <div className="bg-white rounded-xl shadow p-4 max-w-5xl mx-auto w-full overflow-hidden hover:shadow-md transition-all duration-300">
+        <div data-aos="fade-zoom-in"
+            data-aos-easing="ease-in-back"
+            data-aos-delay="300"
+            data-aos-offset="0" className="bg-white rounded-xl shadow p-4 max-w-5xl mx-auto w-full overflow-hidden hover:shadow-md transition-all duration-300">
             <div className="flex justify-end">
                 <FavoriteOwnerShip property={{
                     id: id,
@@ -93,7 +96,7 @@ const CardProperty = ({
                         })}</p>
                         <p className="text-sm text-gray-500">Precio</p>
                     </div>
-                </div>  
+                </div>
 
             </div>
             {!isFiltered && (

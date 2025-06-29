@@ -6,7 +6,6 @@ import { ownershipsFetched } from "@/app/interfaces/Filters/FilterBarProps";
 const ListProperty = async ({ currentPage = 1, filters }: {
     currentPage?: number, filters: ownershipsFetched;
 }) => {
-    console.log(filters, 'filters');
     const itemsPerPage = 10;
     let ownershipsFetchedBy = [];
     let ownershipsFetched = [];
@@ -60,6 +59,7 @@ const ListProperty = async ({ currentPage = 1, filters }: {
                     />
                 )
             }
+
 
         </div>
     );
