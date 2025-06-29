@@ -1,36 +1,156 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alt94 - Plataforma Inmobiliaria
 
-## Getting Started
+## 📋 Descripción
 
-First, run the development server:
+Alt94 es una aplicación web moderna de inmobiliaria desarrollada con **Next.js 15**, que permite a los usuarios explorar, filtrar y descubrir propiedades en venta. La aplicación incluye un sistema inteligente de recomendaciones basado en vectores y similitud coseno para sugerir propiedades similares.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### ✨ Características Principales
+
+- **🏠 Catálogo de Propiedades**: Visualización de casas y departamentos con información detallada
+- **🔍 Filtros Avanzados**: Búsqueda por ciudad, tipo de propiedad, precio y ambientes
+- **🤖 Sistema de Recomendaciones**: Motor de recomendación inteligente usando vectores y similitud coseno
+- **❤️ Favoritos**: Sistema para guardar y gestionar propiedades favoritas
+- **📱 Diseño Responsivo**: Interfaz moderna y adaptativa con Tailwind CSS
+- **⚡ Rendimiento Optimizado**: Utiliza las capacidades de servidor y cliente de Next.js
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Estilos**: Tailwind CSS 4
+- **Iconos**: Heroicons, Headless UI
+- **Animaciones**: AOS (Animate On Scroll)
+- **Backend**: API Routes de Next.js
+- **Base de Datos**: JSON local (simulando base de datos)
+
+## 🚀 Instalación y Configuración
+
+### Prerrequisitos
+
+- Node.js 18+ 
+- npm o yarn
+
+### Pasos de Instalación
+
+1. **Clonar el repositorio**
+   ```bash
+   git clone git@github.com:AlejandroGaGa/alt94.git
+   cd alt94
+   ```
+
+2. **Instalar dependencias**
+   ```bash
+   npm install
+   # o
+   yarn install
+   ```
+
+3. **Ejecutar en modo desarrollo**
+   ```bash
+   npm run dev
+   # o
+   yarn dev
+   ```
+
+4. **Abrir en el navegador**
+   ```
+   http://localhost:3000
+   ```
+
+### Scripts Disponibles
+
+- `npm run dev` - Ejecuta el servidor de desarrollo con Turbopack
+- `npm run build` - Construye la aplicación para producción
+- `npm run start` - Inicia el servidor de producción
+- `npm run lint` - Ejecuta el linter de código
+
+## 📁 Estructura del Proyecto
+
+```
+alt94/
+├── app/                          # App Router de Next.js 15
+│   ├── api/                      # API Routes (Backend)
+│   │   ├── data/                 # Base de datos JSON
+│   │   └── ownerships/           # Endpoints de propiedades
+│   ├── components/               # Componentes React
+│   │   ├── Home/                 # Componentes de la página principal
+│   │   ├── OwnerShip/            # Componentes de propiedades
+│   │   ├── Layouts/              # Navbar y Footer
+│   │   └── Filters/              # Componentes de filtros
+│   ├── context/                  # Context API para favoritos
+│   ├── interfaces/               # Tipos TypeScript
+│   ├── utils/                    # Utilidades y motor de recomendación
+│   └── libs/                     # Librerías y servicios
+├── public/                       # Archivos estáticos
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Funcionalidades Técnicas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Backend (Server-Side)
+- **API Routes**: Endpoints para obtener propiedades y recomendaciones
+- **Motor de Recomendación**: Algoritmo de similitud coseno y vectores
+- **Filtrado Dinámico**: Búsqueda y filtrado de propiedades
+- **Paginación**: Gestión eficiente de grandes volúmenes de datos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Frontend (Client-Side)
+- **Componentes Modulares**: Arquitectura reutilizable
+- **Context API**: Gestión de estado global para favoritos
+- **Animaciones**: Efectos visuales con AOS
+- **Responsive Design**: Adaptación a diferentes dispositivos
 
-## Learn More
+### Sistema de Recomendaciones
+El motor de recomendación utiliza:
+- **Vectores de Características**: Normalización de propiedades (precio, ambientes, metros)
+- **Similitud Coseno**: Cálculo de similitud entre vectores
+- **Ponderación Inteligente**: Combinación de similitud vectorial y ponderada
+- **Filtrado por Umbral**: Recomendaciones con similitud mínima
 
-To learn more about Next.js, take a look at the following resources:
+## 🎯 Páginas Principales
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Home** (`/`): Página principal con banner y información
+- **Propiedades** (`/ownership`): Catálogo con filtros y paginación
+- **Favoritos** (`/favorites`): Propiedades guardadas por el usuario
+- **Acerca de** (`/about`): Información de la empresa
+- **Contacto** (`/contact`): Formulario de contacto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔄 Flujo de Datos
 
-## Deploy on Vercel
+1. **Carga Inicial**: Los datos se cargan desde `db.json` en el servidor
+2. **Filtrado**: Los filtros se aplican tanto en cliente como servidor
+3. **Recomendaciones**: Se calculan en tiempo real usando el motor de recomendación
+4. **Estado**: Los favoritos se mantienen en el contexto de React
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Despliegue
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Vercel (Recomendado)
+```bash
+npm run build
+vercel --prod
+```
+
+### Otros Proveedores
+La aplicación es compatible con cualquier proveedor que soporte Next.js:
+- Netlify
+- Railway
+- DigitalOcean App Platform
+- AWS Amplify
+
+## 🤝 Contribución
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📝 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+## 📞 Soporte
+
+Para soporte técnico o consultas sobre el proyecto, contacta al equipo de desarrollo.
+
+---
+
+**Desarrollado con ❤️ usando Next.js 15**
