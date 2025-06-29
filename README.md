@@ -3,6 +3,8 @@
 ## 📋 Descripción
 
 Alt94 es una aplicación web moderna de inmobiliaria desarrollada con **Next.js 15**, que permite a los usuarios explorar, filtrar y descubrir propiedades en venta. La aplicación incluye un sistema inteligente de recomendaciones basado en vectores y similitud coseno para sugerir propiedades similares.
+### Video de explicación
+https://drive.google.com/file/d/1kkI3-bXlZUMn_aPILAnylyPVMV1EaYV8/view?usp=sharing
 
 ### ✨ Características Principales
 
