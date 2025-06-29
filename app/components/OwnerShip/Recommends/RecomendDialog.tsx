@@ -42,6 +42,7 @@ const RecomendDialog = ({
                         {recommendations.map((recommendation: any) => (
                             <CardProperty
                                 key={recommendation.id}
+                                id={recommendation.id}
                                 image={recommendation.imagen}
                                 alt={recommendation.alt}
                                 title={recommendation.titulo}

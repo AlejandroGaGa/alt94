@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { UserCircleIcon } from '@heroicons/react/24/solid';
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +14,7 @@ export default function Navbar() {
     const menuItems = [
         { label: 'Inicio', href: '/' },
         { label: 'Nosotros', href: '/about' },
-        { label: 'Propiedades', href: '/ownership' },
+        { label: 'Inmuebles en venta', href: '/ownership' },
         { label: 'Contacto', href: '/contact' },
     ];
 
@@ -34,8 +35,8 @@ export default function Navbar() {
                                 <Link
                                     key={item.label}
                                     className={`inline-block px-4 py-2 rounded-full shadow-sm transition-all duration-200 ${isActive
-                                            ? 'bg-gray-300 text-gray-800 font-medium'
-                                            : 'bg-gray-100 text-black hover:bg-gray-200 hover:text-gray-800'
+                                        ? 'bg-gray-300 text-gray-800 font-medium'
+                                        : 'bg-gray-100 text-black hover:bg-gray-200 hover:text-gray-800'
                                         }`}
                                     href={item.href}
                                 >
@@ -46,9 +47,25 @@ export default function Navbar() {
                     </nav>
 
                     <div className="hidden md:flex items-center gap-4">
-                        <button className="relative group rounded-full bg-gray-100 p-2 text-gray-600 hover:bg-gray-200 transition-colors duration-200">
-                            <UserCircleIcon className="w-6 h-6" />
-                        </button>
+                        <Popover className="relative">
+                            {({ close }) => (
+                                <>
+                                    <PopoverButton className="relative group rounded-full bg-gray-100 p-2 text-gray-600 hover:bg-gray-200 transition-colors duration-200">
+                                        <UserCircleIcon className="w-6 h-6" />
+                                    </PopoverButton>
+                                    <PopoverPanel className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg p-2">
+                                        <Link
+                                            href="/favorites"
+                                            className="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
+                                            onClick={() => close()}
+                                        >
+                                            Mis favoritos
+                                        </Link>
+                                    </PopoverPanel>
+                                </>
+                            )}
+                        </Popover>
+
                     </div>
 
                     <div className="md:hidden">
@@ -87,8 +104,8 @@ export default function Navbar() {
                                     key={item.label}
                                     href={item.href}
                                     className={`block px-4 py-2 text-gray-600 transition-colors duration-200 rounded-md m-2 ${isActive
-                                            ? 'bg-gray-300 text-gray-800 font-medium'
-                                            : 'bg-gray-100 hover:bg-gray-200'
+                                        ? 'bg-gray-300 text-gray-800 font-medium'
+                                        : 'bg-gray-100 hover:bg-gray-200'
                                         }`}
                                 >
                                     {item.label}

@@ -6,8 +6,10 @@ import Image from "next/image";
 import { useState } from "react";
 import RecomendDialog from "./Recommends/RecomendDialog";
 import { SparklesIcon } from "@heroicons/react/24/solid";
+import FavoriteOwnerShip from "../FavoriteOwnerShip";
 
 const CardProperty = ({
+    id = 0,
     title = "",
     size = 0,
     price = 0,
@@ -39,6 +41,18 @@ const CardProperty = ({
     }
     return (
         <div className="bg-white rounded-xl shadow p-4 max-w-5xl mx-auto w-full overflow-hidden hover:shadow-md transition-all duration-300">
+            <div className="flex justify-end">
+                <FavoriteOwnerShip property={{
+                    id: id,
+                    titulo: title,
+                    imagen: img,
+                    precio: price,
+                    tipo: type,
+                    ciudad: city,
+                    metros_cuadrados: size,
+                    ambientes: rooms,
+                }} />
+            </div>
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div className="flex items-center gap-4 flex-1 min-w-0">
                     <div className="w-50 h-50 relative shrink-0 rounded-3xl overflow-hidden">
@@ -79,7 +93,7 @@ const CardProperty = ({
                         })}</p>
                         <p className="text-sm text-gray-500">Precio</p>
                     </div>
-                </div>
+                </div>  
 
             </div>
             {!isFiltered && (

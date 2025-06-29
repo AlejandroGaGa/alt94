@@ -30,6 +30,7 @@ const ListProperty = async ({ currentPage = 1, filters }: {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                 {ownershipsToShow?.data?.map((ownership: any) => (
                     <CardProperty
+                        id={ownership.id}
                         key={ownership.id}
                         title={ownership.titulo}
                         size={ownership.metros_cuadrados}

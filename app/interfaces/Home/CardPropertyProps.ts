@@ -1,4 +1,5 @@
 export interface CardPropertyProps {
+    id: number;
     title: string;
     size: number;
     price: number;
