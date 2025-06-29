@@ -6,15 +6,11 @@ import { Input, Select } from '@headlessui/react';
 import { MagnifyingGlassIcon, FunnelIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import { Transition, Button } from '@headlessui/react'
 
-
-
 const propertyTypes = [
   { id: 'all', name: 'Todos' },
   { id: 'casa', name: 'Casa' },
   { id: 'departamento', name: 'Departamento' },
 ];
-
-
 
 export default function FilterBar() {
   const router = useRouter();

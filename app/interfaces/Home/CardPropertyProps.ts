@@ -6,4 +6,6 @@ export interface CardPropertyProps {
     city: string;
     image: string;
     alt?: string;
+    rooms: number;
+    isFiltered: boolean;
 }

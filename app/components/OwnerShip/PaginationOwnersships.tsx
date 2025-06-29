@@ -4,7 +4,7 @@ import { PaginationOwnersshipsProps } from "@/app/interfaces/OwnerShips/Paginati
 const PaginationOwnersships = ({ currentPage, totalItems, itemsPerPage }: PaginationOwnersshipsProps) => {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-
+    
     return (
         <div className="w-full overflow-x-auto">
             <div className="flex justify-center sm:justify-center items-center gap-1 sm:gap-2 py-2 w-max sm:w-auto mx-auto">

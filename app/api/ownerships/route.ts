@@ -1,6 +1,12 @@
 import { NextResponse } from 'next/server';
 import getDatabase from '../data/getdatabase';
 
+/**
+ * Maneja la obtención de propiedades.
+ * 
+ * @param request - La solicitud HTTP recibida.
+ * @returns Una respuesta HTTP con las propiedades paginadas.
+ */
 export async function GET(request: Request) {
   try {
     const url = new URL(request.url);

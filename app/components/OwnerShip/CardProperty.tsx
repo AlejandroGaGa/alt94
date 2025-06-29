@@ -1,9 +1,11 @@
 "use client";
-import { useState } from "react";
-import Image from "next/image";
 import { CardPropertyProps } from "@/app/interfaces/Home/CardPropertyProps";
+import { Button } from "@headlessui/react";
 import Decimal from "decimal.js";
-import RecommendOwnerShips from "./RecommendOwnerShips";
+import Image from "next/image";
+import { useState } from "react";
+import RecomendDialog from "./Recommends/RecomendDialog";
+import { SparklesIcon } from "@heroicons/react/24/solid";
 
 const CardProperty = ({
     title = "",
@@ -12,15 +14,34 @@ const CardProperty = ({
     type = "",
     city = "",
     image = "/Inmobiliaria/logo.webp",
-    alt = "Property image"
+    alt = "Property image",
+    rooms = 0,
+    isFiltered = false
 }: CardPropertyProps) => {
     const [img, setImageError] = useState(image);
+    const [isOpen, setIsOpen] = useState(false);
+    const [recommendations, setRecommendations] = useState([]);
 
+
+    const handleOpen = () => {
+        setIsOpen(true);
+        fetchRecommendations();
+    }
+
+    const fetchRecommendations = async () => {
+        try {
+            const resRecommendedOwnerships = await fetch(`/api/ownerships/recommended?type=${type}&city=${city}&price=${price}&useVector=true&limit=5`);
+            const response = await resRecommendedOwnerships.json();
+            setRecommendations(response?.recommendations);
+        } catch (error) {
+            console.log(error, 'error');
+        }
+    }
     return (
         <div className="bg-white rounded-xl shadow p-4 max-w-5xl mx-auto w-full overflow-hidden hover:shadow-md transition-all duration-300">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div className="flex items-center gap-4 flex-1 min-w-0">
-                    <div className="w-16 h-16 relative shrink-0 rounded-full overflow-hidden">
+                    <div className="w-50 h-50 relative shrink-0 rounded-3xl overflow-hidden">
                         <Image
                             src={img}
                             alt={alt}
@@ -48,6 +69,10 @@ const CardProperty = ({
                         <p className="text-sm text-gray-500">Metros cuadrados</p>
                     </div>
                     <div className="flex-1">
+                        <p className="text-lg font-bold text-gray-800">{rooms}</p>
+                        <p className="text-sm text-gray-500">Habitaciones</p>
+                    </div>
+                    <div className="flex-1">
                         <p className="text-lg font-bold text-gray-800"> ${new Decimal(price).toDecimalPlaces(2).toNumber().toLocaleString("es-MX", {
                             minimumFractionDigits: 2,
                             maximumFractionDigits: 2,
@@ -57,12 +82,19 @@ const CardProperty = ({
                 </div>
 
             </div>
-            <RecommendOwnerShips
-                price={price}
-                type={type}
-                city={city}
-            />
+            {!isFiltered && (
+                <>
+                    <Button onClick={handleOpen} className="mt-4 w-full flex items-center justify-center gap-2 px-6 py-3 bg-black text-white rounded-full shadow hover:bg-gray-800 transition duration-300 cursor-pointer"
+                    >
+                        <SparklesIcon className="h-5 w-5 text-white" />
+                        <span className="text-sm font-medium">Ver recomendaciones</span>
+                    </Button>
+                    <RecomendDialog isOpen={isOpen} setIsOpen={setIsOpen} recommendations={recommendations} />
+                </>
+            )}
+
         </div>
+
     );
 };
 

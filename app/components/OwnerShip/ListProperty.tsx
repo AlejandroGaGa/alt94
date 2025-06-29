@@ -4,19 +4,25 @@ import PaginationOwnersships from "./PaginationOwnersships";
 import { ownershipsFetched } from "@/app/interfaces/Filters/FilterBarProps";
 
 const ListProperty = async ({ currentPage = 1, filters }: {
-    currentPage?: number, filters: ownershipsFetched; 
+    currentPage?: number, filters: ownershipsFetched;
 }) => {
+    console.log(filters, 'filters');
     const itemsPerPage = 10;
     let ownershipsFetchedBy = [];
     let ownershipsFetched = [];
+    let isFiltered = false;
 
-    if(filters.type !== "all" || filters.city !== "") {
+    if (filters.type !== "all" || filters.city !== "" && filters.useVector === false) {
+
         ownershipsFetchedBy = await ownerships.getOwnershipsBy(filters.type, filters.city);
-    }else{
-        ownershipsFetched = await ownerships.getOwnerships(currentPage, itemsPerPage);;
+        isFiltered = true;
+    } else {
+        ownershipsFetched = await ownerships.getOwnerships(currentPage, itemsPerPage);
+        isFiltered = false;
     }
-    
+
     const ownershipsToShow = ownershipsFetchedBy?.data?.length > 0 ? ownershipsFetchedBy : ownershipsFetched;
+
 
     return (
         <div className="flex flex-col gap-4 mt-10">
@@ -31,6 +37,8 @@ const ListProperty = async ({ currentPage = 1, filters }: {
                         type={ownership.tipo}
                         city={ownership.ciudad}
                         image={ownership.imagen}
+                        rooms={ownership.ambientes}
+                        isFiltered={isFiltered}
                     />
                 ))}
             </div>
@@ -43,7 +51,7 @@ const ListProperty = async ({ currentPage = 1, filters }: {
                     />
                 )
             }
-         
+
         </div>
     );
 };
